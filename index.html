@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NEON_SHIFT // Terminal RPG</title>
+        <style>
+            :root {
+                --neon-green: #39ff14f;
+                --neon-blue: #00f0ff;
+                --cyber-pink: #ff007f;
+                --dark-grid: #0a0b10;
+            }
+            body {
+                background-color: var(--dark-grid);
+                color: #e2e8f0;
+                font-family: 'Courier New', Courier, monospace;
+                margin: 0;
+                padding: 20px;
+                display: grid;
+                grid-template-columns: 320px 1fr;
+                gap: 20px;
+                height:90vh;
+            }
+            #sidebar {
+                border: 2px solid var(--neon-blue);
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0,240,255,0.2);
+                background: rgba(10, 11, 16, 0.8);
+            }
+            #main-terminal {
+                border: 2px solid var(--cyber-pink);
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                box-shadow: 0 0 10px rgba(255,0,127,0.2);
+                background: rgba(10, 11, 16, 0.8);
+            }
+            #story-text {
+                font-size: 1.2rem;
+                line-height: 1.6;
+                margin-bottom: 20px;
+                white-space: pre-line;
+            }
+            .choice.btn {
+                display: block;
+                width: 100%;
+                background: transparent;
+                color: var(--neon-green);
+                border: 1px solid var(--neon-green);
+                padding: 14px;
+                margin: 10px 0;
+                text-align: left;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+            .choice.btn:hover:not(:disabled) {
+                background: var(--neon-green);
+                color: #000;
+                box-shadow: 0 0 15px var(--neon-green);
+            }
+            .choice.btn:disabled {
+                color: #4a5568;
+                border-color: #2d3748;
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+            h2 { color: var(--neon-blue); border-bottom: 1px solid var(--neon-blue); padding-bottom: 5px; font-size: 1.2rem; }
+            .stat-val { color: var(--cyber-pink); font-weight: bold; }
+        
+        </style>
+    </head>
+     <body>
+        <div id="sidebar">
+            <h2>//OPERATOR_STATS</h2>
+            <p>KNOWLEDGE: <span id="lvl-knowledge" class="stat-val">1</span></p>
+            <p>REPUTATION: <span id="lvl-rep" class="stat-val">1</span></p>
+            <p>HARDWARE: <span id="lvl-hardware" class="stat-val">1</span></p>
+            
+            <h2>//RESOURCE_INVENTORY</h2>
+            <ul id="inventory-list"></ul>
+        </div>
+        <div>
+            <div id="main-terminal">
+                <div id="story-text">Connecting to cybernetic network...</div>
+                <div id="choices-container"></div>
+        </div>
+        <script src="story.js"></script>
+        <script src="game.js"></script>
+    </body>
+</html>
